@@ -139,4 +139,24 @@ public class UserService implements UserServiceInterface{
 			return reponse;
 		}
 	}
+
+	@Override
+	public User getUserValue(String token) {
+		Long userid=0L;
+		User user=new User();
+		try {
+			userid = TokenUtil.verifyToken(token);
+		}catch (Exception e) {
+			System.out.println(""+e.getMessage());
+		}
+		boolean isUser=userRepository.findById(userid).isPresent();
+		if(isUser) {
+			user=userRepository.findById(userid).get();
+			user.setSignIn(false);
+			user.setToken("");
+			userRepository.save(user);
+			return user;
+		}
+		return user;
+	}
 }

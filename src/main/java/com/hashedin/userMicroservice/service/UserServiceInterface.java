@@ -1,6 +1,7 @@
 package com.hashedin.userMicroservice.service;
 
 
+import com.hashedin.userMicroservice.dao.User;
 import com.hashedin.userMicroservice.dao.UserResponse;
 import com.hashedin.userMicroservice.dto.LoginDto;
 import com.hashedin.userMicroservice.dto.UserDto;
@@ -16,5 +17,7 @@ public interface UserServiceInterface {
 	UserResponse getUser(String token);
 
 	Response userSignOut(String token);
+
+	User getUserValue(String token);
 
 }

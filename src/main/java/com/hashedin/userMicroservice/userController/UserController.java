@@ -75,5 +75,13 @@ public class UserController {
 		return new ResponseEntity<Response>(response,HttpStatus.ACCEPTED);
 		
 	}
+	
+	@GetMapping("/getUserValue/{token}")
+	public User getUserValue(@PathVariable String token) {
+		
+		User user=userService.getUserValue(token);
+		return user;
+		
+	}
 
 }
